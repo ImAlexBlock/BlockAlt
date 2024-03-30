@@ -7,7 +7,7 @@ app = FastAPI()
 
 @app.get("/blockalt/status")
 def read_root():
-    return {"status": 2, "version": "240330"} # statusID = 1 正常 2 维护
+    return {"status": 1, "version": "240330"} # statusID = 1 正常 2 维护
 
 
 @app.get("/blockalt/info")
