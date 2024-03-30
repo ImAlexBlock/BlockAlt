@@ -2,8 +2,28 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import pyperclip
+import requests
+from requests.exceptions import ConnectionError, Timeout, RequestException
 
 get_module = 'Account'
+version = '240330'
+
+# api列表
+api_status = "http://127.0.0.1:8000/blockalt/status"
+api_info = "http://127.0.0.1:8000/blockalt/info"
+
+# 验证服务器状态
+try:
+    get_status = requests.get(api_status).json()
+    if get_status["status"] == 1:
+        if get_status["version"] != version:
+            messagebox.showerror("Check Version", f"检查版本更新！\n当前版本：{version}\n最新版本：{get_status['version']}")
+            exit()
+except RequestException as error_info:
+    messagebox.showerror("Error",
+                         f'''人生自古谁无死，遗憾的服务器已经死亡，无法继续与您互动。\n您可以检查网络后重试，如果问题持续发生请联系管理员！\n\n{error_info}''')
+    exit()
+
 
 def update_file_content(filepath, remaining_lines):
     with open(filepath, 'w') as file:
@@ -36,25 +56,21 @@ def get_cookie():
 
 
 def login():
-    # 这里是登录按钮的回调函数
-    # 可以添加验证用户名和密码的逻辑
-    print("Usernmae:", entry_name.get())
-    print("Password:", entry_password.get())
-    # 这里只是一个示例弹窗
-    messagebox.showinfo("登录信息", "登录成功！")
+    # print("Username:", entry_name.get())
+    # print("Password:", entry_password.get())
+    messagebox.showinfo("Login", "Successful!")
     login_ui.destroy()
     main.deiconify()
 
+
 def register():
-    # 这里是注册按钮的回调函数
-    # 可以添加转到注册窗口的逻辑
-    messagebox.showinfo("注册窗口", "跳转到注册窗口！")
+    messagebox.showinfo("Register", "TODO")
 
 
 # 主窗口
 main = tk.Tk()
 main.geometry("300x240")
-main.title("GetAlt 1.0")
+main.title("BlockAlt 1.0")
 main.resizable(False, False)
 main.withdraw()
 account_var = tk.StringVar()
@@ -63,6 +79,9 @@ password_var = tk.StringVar()
 login_ui = tk.Tk()
 login_ui.title("登录窗口")
 login_ui.geometry("270x135")
+login_ui.resizable(False, False)
+
+
 def copy_to_clipboard(text):
     pyperclip.copy(text)
     print("Copied to clipboard:", text)
@@ -102,16 +121,31 @@ def on_get():
 
 
 def on_info():
-    print("Info")
-    messagebox.showinfo("Info", '''    GetAlt © 2018-2024 AlexBlock. All Rights Reserved.
-    Version: 0.0.1  Build: 240330
+    messagebox.showinfo("Info", f'''    BlockAlt © 2024 AlexBlock. All Rights Reserved.
+    Version: {version}
     Website: https://alt.alexblock.org
     --------------------------------------------------------------
-    Count:
-    Account: 0
-    Cookie: 0
+    Account: {count_account()}
+    Cookie: {count_cookie()}
     ''')
 
+
+def count_account():
+    try:
+        data = requests.get(api_info).json()
+        count = data["account"]
+        return count
+    except RequestException:
+        return 'N/A'
+
+
+def count_cookie():
+    try:
+        data = requests.get(api_info).json()
+        count = data["cookie"]
+        return count
+    except RequestException:
+        return 'N/A'
 
 # 界面元素
 label_account = ttk.Label(main, text="Account")
@@ -135,25 +169,25 @@ btn_module.grid(row=4, column=4, padx=10, pady=10)
 btn_get.grid(row=4, column=1, columnspan=3, sticky="ew", padx=10, pady=10)
 btn_info.grid(row=0, column=4, padx=10, pady=10)
 
-# 创建“Name”标签和输入框
+# Name
 lbl_name = ttk.Label(login_ui, text="Name")
 lbl_name.grid(row=0, column=0, padx=10, pady=10)
 entry_name = ttk.Entry(login_ui)
 entry_name.grid(row=0, column=1, columnspan=2, padx=10)
 
-# 创建“Password”标签和输入框
+# Password
 lbl_password = ttk.Label(login_ui, text="Password")
 lbl_password.grid(row=1, column=0, padx=10, pady=10)
 entry_password = ttk.Entry(login_ui, show="*")
 entry_password.grid(row=1, column=1, columnspan=2, padx=10)
 
-# 创建登录和注册按钮
+# 登录和注册按钮
 btn_login = ttk.Button(login_ui, text="Login", command=login)
 btn_login.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky="ew")
 
 btn_register = ttk.Button(login_ui, text="Register", command=register)
 btn_register.grid(row=2, column=2, columnspan=2, padx=10, pady=10, sticky="ew")
 
-# 启动主事件循环
+# 循环
 login_ui.mainloop()
 main.mainloop()
