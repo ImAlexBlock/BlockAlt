@@ -19,6 +19,8 @@ try:
         if get_status["version"] != version:
             messagebox.showerror("Check Version", f"检查版本更新！\n当前版本：{version}\n最新版本：{get_status['version']}")
             exit()
+    if get_status["status"] == 2:
+        messagebox.showerror("Error", "服务器维护中，请稍后再试！")
 except RequestException as error_info:
     messagebox.showerror("Error",
                          f'''人生自古谁无死，遗憾的服务器已经死亡，无法继续与您互动。\n您可以检查网络后重试，如果问题持续发生请联系管理员！\n\n{error_info}''')
