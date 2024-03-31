@@ -17,13 +17,14 @@ try:
     get_status = requests.get(api_status).json()
     if get_status["status"] == 1:
         if get_status["version"] != version:
-            messagebox.showerror("Check Version", f"检查版本更新！\n当前版本：{version}\n最新版本：{get_status['version']}")
+            messagebox.showerror("Check Version",
+                                 f"检查版本更新！\n当前版本：{version}\n最新版本：{get_status['version']}")
             exit()
     if get_status["status"] == 2:
         messagebox.showerror("Error", "服务器维护中，请稍后再试！")
-except RequestException as error_info:
+except RequestException:
     messagebox.showerror("Error",
-                         f'''人生自古谁无死，遗憾的服务器已经死亡，无法继续与您互动。\n您可以检查网络后重试，如果问题持续发生请联系管理员！\n\n{error_info}''')
+                         f'''人生自古谁无死，遗憾的服务器已经死亡，无法继续与您互动。\n您可以检查网络后重试，如果问题持续发生请联系管理员！''')
     exit()
 
 
@@ -79,7 +80,7 @@ account_var = tk.StringVar()
 password_var = tk.StringVar()
 
 login_ui = tk.Tk()
-login_ui.title("登录窗口")
+login_ui.title("Login")
 login_ui.geometry("270x135")
 login_ui.resizable(False, False)
 
@@ -140,7 +141,6 @@ def count_account():
     except RequestException:
         return 'N/A'
 
-
 def count_cookie():
     try:
         data = requests.get(api_info).json()
@@ -148,6 +148,7 @@ def count_cookie():
         return count
     except RequestException:
         return 'N/A'
+
 
 # 界面元素
 label_account = ttk.Label(main, text="Account")

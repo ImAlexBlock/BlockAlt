@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ 服务器状态检测&#10;+ 版本检测和提示更新&#10;+ 账号剩余数量查询">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="~ 推炸了，忘记给status_id改回来了">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/PycharmProjects/pythonProject/BlockAlt&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/PycharmProjects&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
@@ -209,7 +212,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711805827629</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="+ 新增维护status_id = 2">
+      <option name="closed" value="true" />
+      <created>1711806531633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711806531633</updated>
+    </task>
+    <task id="LOCAL-00008" summary="~ 推炸了，忘记给status_id改回来了">
+      <option name="closed" value="true" />
+      <created>1711806649673</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711806649673</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +248,8 @@
     <MESSAGE value="你说得对，提交≠有内容" />
     <MESSAGE value="fastapi实现status和info" />
     <MESSAGE value="+ 服务器状态检测&#10;+ 版本检测和提示更新&#10;+ 账号剩余数量查询" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ 服务器状态检测&#10;+ 版本检测和提示更新&#10;+ 账号剩余数量查询" />
+    <MESSAGE value="+ 新增维护status_id = 2" />
+    <MESSAGE value="~ 推炸了，忘记给status_id改回来了" />
+    <option name="LAST_COMMIT_MESSAGE" value="~ 推炸了，忘记给status_id改回来了" />
   </component>
 </project>
