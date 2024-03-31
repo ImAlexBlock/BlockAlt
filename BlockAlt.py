@@ -66,8 +66,12 @@ def login():
     # print("Password:", entry_password.get())
     messagebox.showinfo("Login", "Successful!")
     # FastLogin
-    with open('fastlogin.txt', 'a')as file:
-        file.write(entry_name.get() + ':' + entry_password.get())
+    login_data = entry_name.get() + ':' + entry_password.get()
+
+    byte_data = base64.b64encode(login_data.encode('utf-8'))
+
+    with open('fastlogin.txt', 'w') as file:
+        file.write(byte_data.decode('utf-8'))
 
     login_ui.destroy()
     main.deiconify()
@@ -157,6 +161,7 @@ def count_account():
     except RequestException:
         return 'N/A'
 
+
 def count_cookie():
     try:
         data = requests.get(api_info).json()
@@ -203,9 +208,23 @@ entry_password.grid(row=1, column=1, columnspan=2, padx=10)
 # 登录和注册按钮
 btn_login = ttk.Button(login_ui, text="Login", command=login)
 btn_login.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky="ew")
-
 btn_register = ttk.Button(login_ui, text="Register", command=register)
 btn_register.grid(row=2, column=2, columnspan=2, padx=10, pady=10, sticky="ew")
+
+# FastLogin
+try:
+    with open('fastlogin.txt', 'r') as file:
+        encoded_string = file.read()
+
+    # Base64解码
+    decoded_bytes = base64.b64decode(encoded_string)
+    decoded_string = decoded_bytes.decode('utf-8')
+    data = decoded_string.split(':')
+    entry_name.insert(0, data[0])
+    entry_password.insert(0, data[1])
+
+except:
+    pass
 
 # 循环
 login_ui.mainloop()

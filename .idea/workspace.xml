@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ 修改一点上一次的东西">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ FastLogin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
     </list>
@@ -258,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711891368515</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="+ FastLogin">
+      <option name="closed" value="true" />
+      <created>1711892409975</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711892409975</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -284,6 +292,7 @@
     <MESSAGE value="+ 初步实现了写入数据库，接下来处理注册" />
     <MESSAGE value="+ register_api提取数据" />
     <MESSAGE value="+ 修改一点上一次的东西" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ 修改一点上一次的东西" />
+    <MESSAGE value="+ FastLogin" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ FastLogin" />
   </component>
 </project>
