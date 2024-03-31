@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter.simpledialog import askstring
 import pyperclip
 import requests
 from requests.exceptions import ConnectionError, Timeout, RequestException
@@ -11,6 +12,7 @@ version = '240330'
 # api列表
 api_status = "http://127.0.0.1:8000/blockalt/status"
 api_info = "http://127.0.0.1:8000/blockalt/info"
+api_register = "http://127.0.0.1:8000/blockalt/register"
 
 # 验证服务器状态
 try:
@@ -67,7 +69,14 @@ def login():
 
 
 def register():
-    messagebox.showinfo("Register", "TODO")
+    username = entry_name.get()
+    password = entry_password.get()
+    code = askstring("Verify", "Activation Code:")
+    try:
+        requests.get(api_register + '?username=' + username + '&password=' + password + '&activation_code=' + code)
+        messagebox.showinfo("Register", "Successful!\nThank you for choosing BlockAlt :-)")
+    except:
+        messagebox.showerror("Register", "Network error!")
 
 
 # 主窗口

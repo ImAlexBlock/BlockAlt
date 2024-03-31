@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="~ 推炸了，忘记给status_id改回来了">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ 初步实现了写入数据库，接下来处理注册">
+      <change beforePath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +151,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
       </set>
     </attachedChunks>
   </component>
@@ -228,7 +228,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711806649673</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="~ 改了一些细节的东西">
+      <option name="closed" value="true" />
+      <created>1711854022883</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711854022884</updated>
+    </task>
+    <task id="LOCAL-00010" summary="+ 初步实现了写入数据库，接下来处理注册">
+      <option name="closed" value="true" />
+      <created>1711888459913</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711888459914</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,6 +266,8 @@
     <MESSAGE value="+ 服务器状态检测&#10;+ 版本检测和提示更新&#10;+ 账号剩余数量查询" />
     <MESSAGE value="+ 新增维护status_id = 2" />
     <MESSAGE value="~ 推炸了，忘记给status_id改回来了" />
-    <option name="LAST_COMMIT_MESSAGE" value="~ 推炸了，忘记给status_id改回来了" />
+    <MESSAGE value="~ 改了一些细节的东西" />
+    <MESSAGE value="+ 初步实现了写入数据库，接下来处理注册" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ 初步实现了写入数据库，接下来处理注册" />
   </component>
 </project>
