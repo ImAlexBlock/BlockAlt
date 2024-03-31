@@ -74,9 +74,11 @@ def register():
     code = askstring("Verify", "Activation Code:")
     try:
         requests.get(api_register + '?username=' + username + '&password=' + password + '&activation_code=' + code)
-        messagebox.showinfo("Register", "Successful!\nThank you for choosing BlockAlt :-)")
+        pass
     except:
         messagebox.showerror("Register", "Network error!")
+
+    messagebox.showinfo("Register", "Successful!\nThank you for choosing BlockAlt :-)")
 
 
 # 主窗口
