@@ -4,6 +4,7 @@ from tkinter import messagebox
 from tkinter.simpledialog import askstring
 import pyperclip
 import requests
+import base64
 from requests.exceptions import ConnectionError, Timeout, RequestException
 
 get_module = 'Account'
@@ -64,6 +65,10 @@ def login():
     # print("Username:", entry_name.get())
     # print("Password:", entry_password.get())
     messagebox.showinfo("Login", "Successful!")
+    # FastLogin
+    with open('fastlogin.txt', 'a')as file:
+        file.write(entry_name.get() + ':' + entry_password.get())
+
     login_ui.destroy()
     main.deiconify()
 
