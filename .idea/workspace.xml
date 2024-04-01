@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ FastLogin">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ 高雅base64加密fastlogin.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.BlockAlt">
+  <component name="RunManager" selected="Python.test">
     <configuration name="4399FreeGet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
       <option name="ENV_FILES" value="" />
@@ -266,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711892409975</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="+ 高雅base64加密fastlogin.txt">
+      <option name="closed" value="true" />
+      <created>1711893433077</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1711893433077</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -293,6 +302,7 @@
     <MESSAGE value="+ register_api提取数据" />
     <MESSAGE value="+ 修改一点上一次的东西" />
     <MESSAGE value="+ FastLogin" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ FastLogin" />
+    <MESSAGE value="+ 高雅base64加密fastlogin.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ 高雅base64加密fastlogin.txt" />
   </component>
 </project>
