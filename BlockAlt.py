@@ -82,25 +82,28 @@ def register():
     password = entry_password.get()
     code = askstring("Verify", "Activation Code:")
     try:
-        requests.get(api_register + '?username=' + username + '&password=' + password + '&activation_code=' + code)
-        pass
+        request = requests.get(api_register + '?username=' + username + '&password=' + password + '&activation_code=' + code).json()
+        if request['status'] == 1:
+            messagebox.showinfo("Register", "Successful!\nThank you for choosing BlockAlt :-)")
+        elif request['status'] == 0:
+            messagebox.showerror("Register", "Please check your activation code status or ask admin for help")
+            pass
     except:
-        messagebox.showerror("Register", "Network error!")
+        messagebox.showerror("Register", "Please check your internet connection")
 
-    messagebox.showinfo("Register", "Successful!\nThank you for choosing BlockAlt :-)")
 
 
 # 主窗口
 main = tk.Tk()
 main.geometry("300x240")
-main.title("BlockAlt 1.0")
+main.title(f"BlockAlt {version}")
 main.resizable(False, False)
 main.withdraw()
 account_var = tk.StringVar()
 password_var = tk.StringVar()
 
 login_ui = tk.Tk()
-login_ui.title("Login")
+login_ui.title("Login & Register")
 login_ui.geometry("270x135")
 login_ui.resizable(False, False)
 

@@ -53,5 +53,7 @@ async def get_user(username: str, password: str, activation_code: str):
     # 查询激活码
     if check_activation_code(activation_code):
         print("激活码正确")
-
-    return {"status": 1, "msg": "注册成功"}
+        status = 1
+    else:
+        status = 0
+    return {"status": status}
