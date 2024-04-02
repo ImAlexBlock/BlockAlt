@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="+ 高雅base64加密fastlogin.txt">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="激活码错误检查-自动删除-优化一点激活界面逻辑">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/account.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +24,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ImAlexBlock&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="a90572f6-e47a-4c8a-9ba7-49224548c425" />
+        <option name="url" value="https://github.com/ImAlexBlock/BlockAlt.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -49,7 +64,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.BlockAlt">
     <configuration name="4399FreeGet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
       <option name="ENV_FILES" value="" />
@@ -275,7 +290,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711893433077</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="实现激活码检测/使用后删除&amp;更改数据库主键为uid（之前是username）">
+      <option name="closed" value="true" />
+      <created>1711980566258</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1711980566258</updated>
+    </task>
+    <task id="LOCAL-00016" summary="激活码错误检查-自动删除-优化一点激活界面逻辑">
+      <option name="closed" value="true" />
+      <created>1711982318764</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711982318764</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,6 +334,8 @@
     <MESSAGE value="+ 修改一点上一次的东西" />
     <MESSAGE value="+ FastLogin" />
     <MESSAGE value="+ 高雅base64加密fastlogin.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ 高雅base64加密fastlogin.txt" />
+    <MESSAGE value="实现激活码检测/使用后删除&amp;更改数据库主键为uid（之前是username）" />
+    <MESSAGE value="激活码错误检查-自动删除-优化一点激活界面逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="激活码错误检查-自动删除-优化一点激活界面逻辑" />
   </component>
 </project>

@@ -9,6 +9,7 @@ from requests.exceptions import ConnectionError, Timeout, RequestException
 
 get_module = 'Account'
 version = '240330'
+seconds = [10]  # 冷却时间
 
 # api列表
 api_status = "http://127.0.0.1:8000/blockalt/status"
@@ -82,7 +83,8 @@ def register():
     password = entry_password.get()
     code = askstring("Verify", "Activation Code:")
     try:
-        request = requests.get(api_register + '?username=' + username + '&password=' + password + '&activation_code=' + code).json()
+        request = requests.get(
+            api_register + '?username=' + username + '&password=' + password + '&activation_code=' + code).json()
         if request['status'] == 1:
             messagebox.showinfo("Register", "Successful!\nThank you for choosing BlockAlt :-)")
         elif request['status'] == 0:
@@ -90,7 +92,6 @@ def register():
             pass
     except:
         messagebox.showerror("Register", "Please check your internet connection")
-
 
 
 # 主窗口
@@ -124,6 +125,18 @@ def on_change():
         btn_module.config(text=get_module)
 
 
+def cooldown(remaining=None):
+    if remaining is not None:
+        seconds[0] = remaining
+    if seconds[0] > 0:
+        btn_get['text'] = f'Cooldown:{seconds[0]}s'
+        seconds[0] -= 1
+        main.after(1000, cooldown)
+    else:
+        btn_get['text'] = 'Get'
+        btn_get['state'] = 'normal'
+
+
 def on_get():
     if get_module == "Account":
         username, password = get_account()
@@ -144,6 +157,10 @@ def on_get():
             messagebox.showerror("Error", "No cookie found")
             account_var.set("")
             password_var.set("")
+
+    # 冷却时间
+    btn_get['state'] = 'disabled'
+    cooldown()
 
 
 def on_info():
