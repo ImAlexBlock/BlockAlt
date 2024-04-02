@@ -5,6 +5,7 @@ import pymysql
 app = FastAPI()
 
 check_uid = 'SELECT MAX(uid) FROM user_data'
+register = 'INSERT INTO user_data (uid, username, password, activation_code, get_count, status) VALUES (%s, %s, %s, %s, %s, %s)'
 
 try:
     conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
@@ -27,7 +28,7 @@ def check_activation_code(code_to_check):
         print("值已找到！")
         delete_code = "DELETE FROM activation_code WHERE code = %s"
         cursor.execute(delete_code, (code_to_check,))
-        conn.commit()  # 别忘了提交事务哦
+        conn.commit()
         print("激活码已删除！")
         return True
 
@@ -54,6 +55,10 @@ async def get_user(username: str, password: str, activation_code: str):
     if check_activation_code(activation_code):
         print("激活码正确")
         status = 1
+        cursor.execute(register, (uid, username, password, activation_code, '0', '1'))
+        conn.commit()
+        print('注册成功')
+
     else:
         status = 0
     return {"status": status}
