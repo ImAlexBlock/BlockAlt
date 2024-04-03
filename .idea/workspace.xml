@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="获取速度限制（Client）">
-      <change afterPath="$PROJECT_DIR$/CreatCode.py" afterDir="false" />
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题">
       <change beforePath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/account.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fastlogin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fastlogin.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,20 +53,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.4399FreeGet.executor": "Run",
-    "Python.BlockAlt.executor": "Run",
-    "Python.CreatCode.executor": "Run",
-    "Python.LoginUI.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Administrator/PycharmProjects",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.4399FreeGet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.BlockAlt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CreatCode.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LoginUI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/PycharmProjects&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.BlockAlt">
     <configuration name="4399FreeGet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
@@ -182,8 +181,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.BlockAlt" />
-        <item itemvalue="Python.CreatCode" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.CreatCode" />
         <item itemvalue="Python.LoginUI" />
         <item itemvalue="Python.4399FreeGet" />
       </list>
@@ -341,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712065517893</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题">
+      <option name="closed" value="true" />
+      <created>1712069292148</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1712069292148</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -372,6 +379,7 @@
     <MESSAGE value="实现激活码检测/使用后删除&amp;更改数据库主键为uid（之前是username）" />
     <MESSAGE value="激活码错误检查-自动删除-优化一点激活界面逻辑" />
     <MESSAGE value="获取速度限制（Client）" />
-    <option name="LAST_COMMIT_MESSAGE" value="获取速度限制（Client）" />
+    <MESSAGE value="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题" />
   </component>
 </project>

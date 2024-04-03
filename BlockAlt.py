@@ -8,23 +8,24 @@ import base64
 from requests.exceptions import ConnectionError, Timeout, RequestException
 
 get_module = 'Account'
-version = '240330'
+version = '240403'
 seconds = [10]  # 冷却时间
 
 # api列表
-api_status = "http://127.0.0.1:8000/blockalt/status"
+api_status = "http://127.0.0.1:8000/blockalt/info"
 api_info = "http://127.0.0.1:8000/blockalt/info"
 api_register = "http://127.0.0.1:8000/blockalt/register"
+api_login = "http://127.0.0.1:8000/blockalt/login"
 
 # 验证服务器状态
 try:
     get_status = requests.get(api_status).json()
-    if get_status["status"] == 1:
+    if get_status["service_status"] == 1:
         if get_status["version"] != version:
             messagebox.showerror("Check Version",
                                  f"检查版本更新！\n当前版本：{version}\n最新版本：{get_status['version']}")
             exit()
-    if get_status["status"] == 2:
+    if get_status["service_status"] == 2:
         messagebox.showerror("Error", "服务器维护中，请稍后再试！")
 except RequestException:
     messagebox.showerror("Error",
@@ -65,17 +66,30 @@ def get_cookie():
 def login():
     # print("Username:", entry_name.get())
     # print("Password:", entry_password.get())
-    messagebox.showinfo("Login", "Successful!")
-    # FastLogin
-    login_data = entry_name.get() + ':' + entry_password.get()
+    # 登录の逻辑
+    username = entry_name.get()
+    password = entry_password.get()
+    try:
+        response = requests.get(api_login + "?username=" + username + "&password=" + password).json()
+        if response['status'] == 1:
+            messagebox.showinfo("Login", "Successful!")
+            # FastLogin
+            login_data = entry_name.get() + ':' + entry_password.get()
+            byte_data = base64.b64encode(login_data.encode('utf-8'))
+            with open('fastlogin.txt', 'w') as file:
+                file.write(byte_data.decode('utf-8'))
+            # 关闭登录窗口，开启MainUI
+            login_ui.destroy()
+            main.deiconify()
+            pass
 
-    byte_data = base64.b64encode(login_data.encode('utf-8'))
+        elif response['status'] == 2:
+            messagebox.showerror("Login", f"人生自古谁无死？遗憾的 {username} 已经死亡。\n如果认为你比窦娥还冤，请寻找管理员！")
+        else:
+            messagebox.showerror("Login", "Failed!")
+    except:
+        messagebox.showerror("Login", "Please check your internet connection")
 
-    with open('fastlogin.txt', 'w') as file:
-        file.write(byte_data.decode('utf-8'))
-
-    login_ui.destroy()
-    main.deiconify()
 
 
 def register():
@@ -164,12 +178,23 @@ def on_get():
 
 
 def on_info():
+    try:
+        get_status = requests.get(api_status).json()
+        version = get_status['version']
+        cookie = get_status['count_cookie']
+        account = get_status['count_account']
+
+    except:
+        cookie = "Unknown"
+        account = "Unknown"
+
+
     messagebox.showinfo("Info", f'''    BlockAlt © 2024 AlexBlock. All Rights Reserved.
     Version: {version}
     Website: https://alt.alexblock.org
     --------------------------------------------------------------
-    Account: {count_account()}
-    Cookie: {count_cookie()}
+    Account: {account}
+    Cookie: {cookie}
     ''')
 
 

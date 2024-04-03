@@ -6,6 +6,8 @@ app = FastAPI()
 
 check_uid = 'SELECT MAX(uid) FROM user_data'
 register = 'INSERT INTO user_data (uid, username, password, activation_code, get_count, status) VALUES (%s, %s, %s, %s, %s, %s)'
+db_login = 'SELECT username, password FROM user_data WHERE username = %s AND password = %s'
+db_info = 'SELECT (service_status, version, count_account, count_cookie, msg) FROM info'
 
 try:
     conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
@@ -33,14 +35,18 @@ def check_activation_code(code_to_check):
         return True
 
 
-@app.get("/blockalt/status")
-def read_root():
-    return {"status": 1, "version": "240330"}  # statusID = 1 正常 2 维护
-
-
 @app.get("/blockalt/info")
 def read_info():
-    return {"account": 10, "cookie": 20}
+    data = conn.cursor()
+    sql = "SELECT service_status, version, count_account, count_cookie, msg FROM info"
+    # 执行SQL语句
+    data.execute(sql)
+    # 获取一行查询结果
+    info_data = data.fetchone()
+    # 如果查询结果不为空，提取结果到不同的变量
+    if info_data is not None:
+        service_status, version, count_account, count_cookie, msg = info_data
+        return {"service_status": service_status, "version": version, "count_account": count_account, "count_cookie": count_cookie, "msg": msg}
 
 
 @app.get("/blockalt/register")
@@ -62,3 +68,26 @@ async def get_user(username: str, password: str, activation_code: str):
     else:
         status = 0
     return {"status": status}
+
+
+@app.get("/blockalt/login")
+async def get_user(username: str, password: str):
+    cursor.execute("""
+        SELECT username, password, status
+        FROM user_data
+        WHERE password = %s
+        AND username = %s
+    """, (password, username))
+    back_user = cursor.fetchall()
+    ban = back_user[0][2]
+    print('status:', ban)
+    if back_user and ban == 1:
+        status = 1
+        print("登录成功")
+    elif ban == 2:
+        status = 2
+        print("账号已禁用")
+    else:
+        status = 0
+    return {"status": status}
+
