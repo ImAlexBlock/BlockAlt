@@ -46,7 +46,8 @@ def read_info():
     # 如果查询结果不为空，提取结果到不同的变量
     if info_data is not None:
         service_status, version, count_account, count_cookie, msg = info_data
-        return {"service_status": service_status, "version": version, "count_account": count_account, "count_cookie": count_cookie, "msg": msg}
+        return {"service_status": service_status, "version": version, "count_account": count_account,
+                "count_cookie": count_cookie, "msg": msg}
 
 
 @app.get("/blockalt/register")
@@ -93,7 +94,7 @@ async def get_user(username: str, password: str):
 
 
 @app.get("/blockalt/get")
-async def get_user(username: str, password: str):
+async def get_user(username: str, password: str, mode: int):
     cursor.execute("""
         SELECT username, password, status
         FROM user_data
@@ -105,10 +106,29 @@ async def get_user(username: str, password: str):
     print('status:', ban)
     if back_user and ban == 1:
         status = 1
-        print("登录成功")
-    elif ban == 2:
+        if mode == 0:
+            try:
+                cursor.execute("SELECT * FROM account LIMIT 1")
+                result = cursor.fetchone()
+                account = result[0]
+                account_passwd = result[1]
+                sql = "DELETE FROM account WHERE name = %s AND password = %s"
+                cursor.execute(sql, (account_passwd, account_passwd))
+                conn.commit()
+                return {"status": status, "account": account, "password": account_passwd}
+            except:
+                status = 0
+        elif mode == 1:
+            try:
+                cursor.execute("SELECT * FROM cookie LIMIT 1")
+                result = cursor.fetchone()
+                cookie = result[0]
+                return {"status": status, "cookie": cookie}
+            except:
+                status = 0
+
+    elif ban == 2:  # banned
         status = 2
-        print("账号已禁用")
     else:
         status = 0
-    return {"status": status}
+        return {"status": status}

@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="测试">
-      <change afterPath="$PROJECT_DIR$/Tools/UpdateAccount.py" afterDir="false" />
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="上传账号cookie到数据库">
+      <change beforePath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/account.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cookie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cookie.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
@@ -72,7 +74,7 @@
       <recent name="C:\Users\Administrator\PycharmProjects\pythonProject\BlockAlt\Tools" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.UpdateAccount">
+  <component name="RunManager" selected="Python.BlockAlt">
     <configuration name="BlockAlt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
       <option name="ENV_FILES" value="" />
@@ -185,9 +187,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.UpdateAccount" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.BlockAlt" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.UpdateAccount" />
         <item itemvalue="Python.CreatCode" />
         <item itemvalue="Python.LoginUI" />
       </list>
@@ -377,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712225934404</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="上传账号cookie到数据库">
+      <option name="closed" value="true" />
+      <created>1712240085626</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1712240085626</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -412,6 +422,7 @@
     <MESSAGE value="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）" />
     <MESSAGE value="优化下开发环境" />
     <MESSAGE value="测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试" />
+    <MESSAGE value="上传账号cookie到数据库" />
+    <option name="LAST_COMMIT_MESSAGE" value="上传账号cookie到数据库" />
   </component>
 </project>

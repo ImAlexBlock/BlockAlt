@@ -10,12 +10,15 @@ from requests.exceptions import ConnectionError, Timeout, RequestException
 get_module = 'Account'
 version = '240403'
 seconds = [10]  # 冷却时间
+login_account = ''
+login_password = ''
 
 # api列表
 api_status = "http://127.0.0.1:8000/blockalt/info"
 api_info = "http://127.0.0.1:8000/blockalt/info"
 api_register = "http://127.0.0.1:8000/blockalt/register"
 api_login = "http://127.0.0.1:8000/blockalt/login"
+api_get = "http://127.0.0.1:8000/blockalt/get"
 
 # 验证服务器状态
 try:
@@ -33,39 +36,29 @@ except RequestException:
     exit()
 
 
-def update_file_content(filepath, remaining_lines):
-    with open(filepath, 'w') as file:
-        file.writelines(remaining_lines)
-
-
-def get_and_remove_first_line(filepath, process_line_func=lambda x: x):
-    with open(filepath, 'r') as file:
-        lines = file.readlines()
-    if not lines:
-        return None
-    first_line = process_line_func(lines[0].strip())
-    update_file_content(filepath, lines[1:])
-    return first_line
-
-
 def get_account():
-    def process_account_line(line):
-        username, password = line.split(':')
-        return username.strip('"'), password.strip('"')
-
-    return get_and_remove_first_line('account.txt', process_account_line)
+    try:
+        request = requests.get(
+            api_get + "?username=" + login_account + "&password=" + login_password + '&mode=0').json()
+        account = request['account']
+        password = request['password']
+        return account, password
+    except RequestException:
+        return 'Error', 'Try again'
 
 
 def get_cookie():
-    def process_cookie_line(line):
-        return line.strip().strip("'")
-
-    return get_and_remove_first_line('cookie.txt', process_cookie_line)
+    try:
+        request = requests.get(
+            api_get + "?username=" + login_account + "&password=" + login_password + '&mode=1').json()
+        cookie = request['cookie']
+        return cookie
+    except RequestException:
+        return 'Error', 'Try again'
 
 
 def login():
-    # print("Username:", entry_name.get())
-    # print("Password:", entry_password.get())
+    global login_account, login_password
     # 登录の逻辑
     username = entry_name.get()
     password = entry_password.get()
@@ -73,6 +66,8 @@ def login():
         response = requests.get(api_login + "?username=" + username + "&password=" + password).json()
         if response['status'] == 1:
             messagebox.showinfo("Login", "Successful!")
+            login_account = username
+            login_password = password
             # FastLogin
             login_data = entry_name.get() + ':' + entry_password.get()
             byte_data = base64.b64encode(login_data.encode('utf-8'))
@@ -84,12 +79,12 @@ def login():
             pass
 
         elif response['status'] == 2:
-            messagebox.showerror("Login", f"人生自古谁无死？遗憾的 {username} 已经死亡。\n如果认为你比窦娥还冤，请寻找管理员！")
+            messagebox.showerror("Login",
+                                 f"人生自古谁无死？遗憾的 {username} 已经死亡。\n如果认为你比窦娥还冤，请寻找管理员！")
         else:
             messagebox.showerror("Login", "Failed!")
     except:
         messagebox.showerror("Login", "Please check your internet connection")
-
 
 
 def register():
@@ -154,23 +149,13 @@ def cooldown(remaining=None):
 def on_get():
     if get_module == "Account":
         username, password = get_account()
-        if username and password:
-            account_var.set(username)
-            password_var.set(password)
-        else:
-            account_var.set("")
-            password_var.set("")
-            messagebox.showerror("Error", "No account found")
+        account_var.set(username)
+        password_var.set(password)
 
     elif get_module == "Cookie":
         cookie = get_cookie()
-        if cookie:
-            account_var.set(cookie)
-            password_var.set("")
-        else:
-            messagebox.showerror("Error", "No cookie found")
-            account_var.set("")
-            password_var.set("")
+        account_var.set(cookie)
+        password_var.set("")
 
     # 冷却时间
     btn_get['state'] = 'disabled'
@@ -187,7 +172,6 @@ def on_info():
     except:
         cookie = "Unknown"
         account = "Unknown"
-
 
     messagebox.showinfo("Info", f'''    BlockAlt © 2024 AlexBlock. All Rights Reserved.
     Version: {version}
