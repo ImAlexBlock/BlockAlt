@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="优化下开发环境">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="测试">
+      <change afterPath="$PROJECT_DIR$/Tools/UpdateAccount.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/account.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cookie.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,48 +52,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.4399FreeGet.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BlockAlt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.CreatCode.executor&quot;: &quot;Run&quot;,
-    &quot;Python.LoginUI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/PycharmProjects&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.4399FreeGet.executor": "Run",
+    "Python.BlockAlt.executor": "Run",
+    "Python.CreatCode.executor": "Run",
+    "Python.LoginUI.executor": "Run",
+    "Python.UpdateAccount.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Administrator/PycharmProjects",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\PycharmProjects\pythonProject\BlockAlt\Tools" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.BlockAlt">
-    <configuration name="4399FreeGet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BlockAlt" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/4399FreeGet.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.UpdateAccount">
     <configuration name="BlockAlt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
       <option name="ENV_FILES" value="" />
@@ -157,6 +139,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="UpdateAccount" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BlockAlt" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tools/UpdateAccount.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
       <option name="ENV_FILES" value="" />
@@ -181,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.BlockAlt" />
+        <item itemvalue="Python.UpdateAccount" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.BlockAlt" />
         <item itemvalue="Python.CreatCode" />
         <item itemvalue="Python.LoginUI" />
-        <item itemvalue="Python.4399FreeGet" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712224837675</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="测试">
+      <option name="closed" value="true" />
+      <created>1712225934404</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712225934404</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -399,6 +411,7 @@
     <MESSAGE value="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题" />
     <MESSAGE value="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）" />
     <MESSAGE value="优化下开发环境" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化下开发环境" />
+    <MESSAGE value="测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试" />
   </component>
 </project>
