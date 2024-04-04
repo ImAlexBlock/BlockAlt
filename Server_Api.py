@@ -91,3 +91,24 @@ async def get_user(username: str, password: str):
         status = 0
     return {"status": status}
 
+
+@app.get("/blockalt/get")
+async def get_user(username: str, password: str):
+    cursor.execute("""
+        SELECT username, password, status
+        FROM user_data
+        WHERE password = %s
+        AND username = %s
+    """, (password, username))
+    back_user = cursor.fetchall()
+    ban = back_user[0][2]
+    print('status:', ban)
+    if back_user and ban == 1:
+        status = 1
+        print("登录成功")
+    elif ban == 2:
+        status = 2
+        print("账号已禁用")
+    else:
+        status = 0
+    return {"status": status}

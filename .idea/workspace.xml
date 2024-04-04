@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题">
-      <change beforePath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonSceneConfigState.xml" afterDir="false" />
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlockAlt.py" beforeDir="false" afterPath="$PROJECT_DIR$/BlockAlt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server_Api.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server_Api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/account.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cookie.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fastlogin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fastlogin.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712069292148</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）">
+      <option name="closed" value="true" />
+      <created>1712163256351</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712163256351</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -380,6 +385,7 @@
     <MESSAGE value="激活码错误检查-自动删除-优化一点激活界面逻辑" />
     <MESSAGE value="获取速度限制（Client）" />
     <MESSAGE value="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题" />
+    <MESSAGE value="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）" />
+    <option name="LAST_COMMIT_MESSAGE" value="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）" />
   </component>
 </project>
