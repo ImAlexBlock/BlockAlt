@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）">
+    <list default="true" id="bc47f042-5ed6-4d4a-a6ea-fd6716b5c651" name="更改" comment="优化下开发环境">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cookie.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fastlogin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fastlogin.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +63,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\PycharmProjects\pythonProject\BlockAlt\Tools" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.BlockAlt">
     <configuration name="4399FreeGet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BlockAlt" />
@@ -122,7 +126,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CreatCode.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Administrator\PycharmProjects\pythonProject\BlockAlt\Tools\CreatCode.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,7 +148,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LoginUI.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Administrator\PycharmProjects\pythonProject\BlockAlt\Tools\LoginUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -353,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712163256351</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="优化下开发环境">
+      <option name="closed" value="true" />
+      <created>1712224837675</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712224837675</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -386,6 +398,7 @@
     <MESSAGE value="获取速度限制（Client）" />
     <MESSAGE value="激活码检测 uid自动排序 激活后端写入数据库 新加入自动生成激活码 冷却时间 修复了删除激活码会删掉整个表的脑淤血问题" />
     <MESSAGE value="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据库匹配账户登录 重构info_api逻辑 现在可以封禁账号（大神）" />
+    <MESSAGE value="优化下开发环境" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化下开发环境" />
   </component>
 </project>
