@@ -9,6 +9,7 @@ register = 'INSERT INTO user_data (uid, username, password, activation_code, get
 db_login = 'SELECT username, password FROM user_data WHERE username = %s AND password = %s'
 db_info = 'SELECT (service_status, version, count_account, count_cookie, msg) FROM info'
 
+
 try:
     conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
     print('Connect to database!')
@@ -113,7 +114,7 @@ async def get_user(username: str, password: str, mode: int):
                 account = result[0]
                 account_passwd = result[1]
                 sql = "DELETE FROM account WHERE name = %s AND password = %s"
-                cursor.execute(sql, (account_passwd, account_passwd))
+                cursor.execute(sql, (account, account_passwd))
                 conn.commit()
                 return {"status": status, "account": account, "password": account_passwd}
             except:
@@ -122,13 +123,14 @@ async def get_user(username: str, password: str, mode: int):
             try:
                 cursor.execute("SELECT * FROM cookie LIMIT 1")
                 result = cursor.fetchone()
-                cookie = result[0]
-                return {"status": status, "cookie": cookie}
-            except:
-                status = 0
+                get_cookie = result[0]
+                return {"status": status, "cookie": get_cookie}
+            finally:
+                sql = "DELETE FROM cookie WHERE cookie = %s"
+                cursor.execute(sql, (get_cookie,))
+                conn.commit()
 
-    elif ban == 2:  # banned
-        status = 2
+
     else:
         status = 0
         return {"status": status}
