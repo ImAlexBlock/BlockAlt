@@ -14,11 +14,17 @@ login_account = ''
 login_password = ''
 
 # api列表
-api_status = "http://127.0.0.1:8000/blockalt/info"
-api_info = "http://127.0.0.1:8000/blockalt/info"
-api_register = "http://127.0.0.1:8000/blockalt/register"
-api_login = "http://127.0.0.1:8000/blockalt/login"
-api_get = "http://127.0.0.1:8000/blockalt/get"
+# api_status = "http://127.0.0.1:8000/blockalt/info"
+# api_info = "http://127.0.0.1:8000/blockalt/info"
+# api_register = "http://127.0.0.1:8000/blockalt/register"
+# api_login = "http://127.0.0.1:8000/blockalt/login"
+# api_get = "http://127.0.0.1:8000/blockalt/get"
+
+api_status = "http://154.40.44.143:8000/blockalt/info"
+api_info = "http://154.40.44.143:8000/blockalt/info"
+api_register = "http://154.40.44.143:8000/blockalt/register"
+api_login = "http://154.40.44.143:8000/blockalt/login"
+api_get = "http://154.40.44.143:8000/blockalt/get"
 
 # 验证服务器状态
 try:

@@ -3,7 +3,6 @@ import pymysql
 # 打开数据库连接
 try:
     conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
-    print('连接成功！')
 
     cursor = conn.cursor()
 

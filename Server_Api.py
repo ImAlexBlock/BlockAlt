@@ -11,12 +11,12 @@ db_info = 'SELECT (service_status, version, count_account, count_cookie, msg) FR
 
 
 try:
-    conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
-    print('Connect to database!')
+    conn = pymysql.connect(host='154.40.44.143', user='blockalt', password='yx5x6s2JY742tX47', db='blockalt')
+    print('连接数据库成功！')
     cursor = conn.cursor()
 
 except:
-    print('Connection database failed!')
+    print('连接数据库失败！')
 
 
 def check_activation_code(code_to_check):
@@ -25,14 +25,14 @@ def check_activation_code(code_to_check):
     back_code = cursor.fetchone()
 
     if back_code is None:
-        print("值未找到！")
+        print("激活码验证失败")
         return False
     else:
-        print("值已找到！")
+        print("激活码验证成功")
         delete_code = "DELETE FROM activation_code WHERE code = %s"
         cursor.execute(delete_code, (code_to_check,))
         conn.commit()
-        print("激活码已删除！")
+        print("被使用激活码已删除！")
         return True
 
 
