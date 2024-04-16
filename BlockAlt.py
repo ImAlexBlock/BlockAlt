@@ -111,9 +111,10 @@ def register():
 
 # 主窗口
 main = tk.Tk()
-main.geometry("300x240")
+main.geometry("305x240")
 main.title(f"BlockAlt {version}")
 main.resizable(False, False)
+main.iconbitmap("Chest.ico")
 main.withdraw()
 account_var = tk.StringVar()
 password_var = tk.StringVar()
@@ -121,6 +122,7 @@ password_var = tk.StringVar()
 login_ui = tk.Tk()
 login_ui.title("Login & Register")
 login_ui.geometry("270x135")
+login_ui.iconbitmap("Chest.ico")
 login_ui.resizable(False, False)
 
 
