@@ -125,6 +125,9 @@ async def get_user(username: str, password: str, mode: int):
                 result = cursor.fetchone()
                 get_cookie = result[0]
                 return {"status": status, "cookie": get_cookie}
+            except:
+                status = 0
+                return {"status": status}
             finally:
                 sql = "DELETE FROM cookie WHERE cookie = %s"
                 cursor.execute(sql, (get_cookie,))
