@@ -1,3 +1,5 @@
+import os
+import sys
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
@@ -25,6 +27,7 @@ api_info = "http://154.40.44.143:8000/blockalt/info"
 api_register = "http://154.40.44.143:8000/blockalt/register"
 api_login = "http://154.40.44.143:8000/blockalt/login"
 api_get = "http://154.40.44.143:8000/blockalt/get"
+
 
 # 验证服务器状态
 try:
@@ -114,7 +117,7 @@ main = tk.Tk()
 main.geometry("305x240")
 main.title(f"BlockAlt {version}")
 main.resizable(False, False)
-main.iconbitmap("Chest.ico")
+# main.iconbitmap("Chest.ico")
 main.withdraw()
 account_var = tk.StringVar()
 password_var = tk.StringVar()
@@ -122,7 +125,7 @@ password_var = tk.StringVar()
 login_ui = tk.Tk()
 login_ui.title("Login & Register")
 login_ui.geometry("270x135")
-login_ui.iconbitmap("Chest.ico")
+# login_ui.iconbitmap("Chest.ico")
 login_ui.resizable(False, False)
 
 
