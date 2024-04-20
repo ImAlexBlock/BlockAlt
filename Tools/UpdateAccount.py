@@ -37,7 +37,7 @@ def get_cookie():
 
 
 try:
-    conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
+    conn = pymysql.connect(host='154.40.44.143', user='blockalt', password='yx5x6s2JY742tX47', db='blockalt')
     print('Connected!')
     module = input('输入添加类型（1.account;2.cookie）：')
     tick = int(input("输入添加数量："))

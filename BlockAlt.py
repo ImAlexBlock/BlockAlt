@@ -10,7 +10,7 @@ import base64
 from requests.exceptions import ConnectionError, Timeout, RequestException
 
 get_module = 'Account'
-version = '240403'
+version = '240420'
 seconds = [10]  # 冷却时间
 login_account = ''
 login_password = ''
@@ -22,12 +22,12 @@ login_password = ''
 # api_login = "http://127.0.0.1:8000/blockalt/login"
 # api_get = "http://127.0.0.1:8000/blockalt/get"
 
-server_ip = "154.40.44.143"
-api_status = f"http://{server_ip}:8000/blockalt/info"
-api_info = f"http://{server_ip}:8000/blockalt/info"
-api_register = f"http://{server_ip}:8000/blockalt/register"
-api_login = f"http://{server_ip}:8000/blockalt/login"
-api_get = f"http://{server_ip}:8000/blockalt/get"
+server_ip = "api.alexblock.org"
+api_status = f"https://{server_ip}/blockalt/info"
+api_info = f"https://{server_ip}/blockalt/info"
+api_register = f"https://{server_ip}/blockalt/register"
+api_login = f"https://{server_ip}/blockalt/login"
+api_get = f"https://{server_ip}/blockalt/get"
 
 
 # 验证服务器状态
@@ -54,7 +54,7 @@ def get_account():
         password = request['password']
         return account, password
     except RequestException:
-        return 'Error', 'Try again'
+        return 'Oops!', 'Please Try again!'
 
 
 def get_cookie():
@@ -64,7 +64,7 @@ def get_cookie():
         cookie = request['cookie']
         return cookie
     except RequestException:
-        return 'Error', 'Try again'
+        return 'Oops!', 'Please Try again!'
 
 
 def login():

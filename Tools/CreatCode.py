@@ -12,11 +12,15 @@ def random_string(numb):
 
 
 try:
-    conn = pymysql.connect(host='localhost', user='root', password='AlexBlock1337', db='blockalt')
+    conn = pymysql.connect(host='154.40.44.143', user='blockalt', password='yx5x6s2JY742tX47', db='blockalt')
     print('Connect to database!')
     cursor = conn.cursor()
     for i in range(int(input('生成激活码数量：'))):
-        cursor.execute(code_add, (random_string(15)))
+        code = 'BlockAlt_' + random_string(15)
+        cursor.execute(code_add, (code,))
+        print(f'Generated: {code}')
+        with open('code.txt', 'a') as file:
+            file.write(code + '\n')
     conn.commit()
     cursor.close()
     print('Generate activation code successfully!')
