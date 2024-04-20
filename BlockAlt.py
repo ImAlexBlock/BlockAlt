@@ -22,11 +22,12 @@ login_password = ''
 # api_login = "http://127.0.0.1:8000/blockalt/login"
 # api_get = "http://127.0.0.1:8000/blockalt/get"
 
-api_status = "http://154.40.44.143:8000/blockalt/info"
-api_info = "http://154.40.44.143:8000/blockalt/info"
-api_register = "http://154.40.44.143:8000/blockalt/register"
-api_login = "http://154.40.44.143:8000/blockalt/login"
-api_get = "http://154.40.44.143:8000/blockalt/get"
+server_ip = "154.40.44.143"
+api_status = f"http://{server_ip}:8000/blockalt/info"
+api_info = f"http://{server_ip}:8000/blockalt/info"
+api_register = f"http://{server_ip}:8000/blockalt/register"
+api_login = f"http://{server_ip}:8000/blockalt/login"
+api_get = f"http://{server_ip}:8000/blockalt/get"
 
 
 # 验证服务器状态
@@ -112,20 +113,33 @@ def register():
         messagebox.showerror("Register", "Please check your internet connection")
 
 
+def center_window(window, width, height):
+    # 获取屏幕尺寸
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    # 计算窗口的宽度和高度
+    x = (screen_width // 2) - (width // 2)
+    y = (screen_height // 2) - (height // 2)
+
+    # 设置窗口的位置
+    window.geometry(f'{width}x{height}+{x}+{y}')
+
+
 # 主窗口
 main = tk.Tk()
-main.geometry("305x240")
+center_window(main, 305, 240)
 main.title(f"BlockAlt {version}")
 main.resizable(False, False)
-# main.iconbitmap("Chest.ico")
+main.iconbitmap("Chest.ico")
 main.withdraw()
 account_var = tk.StringVar()
 password_var = tk.StringVar()
 
 login_ui = tk.Tk()
-login_ui.title("Login & Register")
-login_ui.geometry("270x135")
-# login_ui.iconbitmap("Chest.ico")
+login_ui.title("BlockAlt")
+center_window(login_ui, 270, 135)
+login_ui.iconbitmap("Chest.ico")
 login_ui.resizable(False, False)
 
 
