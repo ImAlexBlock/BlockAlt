@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 print("FreeCookieAPI by AlexBlock")
-print("Build240509")
+print("Build240508")
 
 origins = [
     "https://cookie.alexblock.org",
