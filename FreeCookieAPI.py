@@ -1,37 +1,84 @@
-from fastapi import FastAPI, Request
+import re
+from datetime import datetime
 import pymysql
 import time
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-try:
-    conn = pymysql.connect(host='154.40.44.143', user='blockalt', password='yx5x6s2JY742tX47', db='blockalt')
-    print('连接数据库成功!')
-    cursor = conn.cursor()
-except:
-    print('连接数据库失败!')
+print("FreeCookieAPI by AlexBlock")
+print("Build240509")
+
+origins = [
+    "https://cookie.alexblock.org",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET"],
+    allow_headers=["*"]
+)
 
 
 def get_time():
     # 获取当前时间并格式化
     time_is = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     return time_is
+
+
+def check_ip(ip):
+    with open("get_count.csv") as file:
+        lines = file.readlines()[-50:]  # 从后往前搜索最近的50行
+        for line in reversed(lines):
+            data = line.strip().split(',')
+            if data[0] == ip:
+                timestamp = datetime.strptime(data[1], '%Y-%m-%d %H:%M:%S')
+                current_time = datetime.now()
+                time_difference = (current_time - timestamp).total_seconds()
+                if time_difference < 10:
+                    return False  # 如果查找到IP并且时间差小于10秒，则返回False
+                else:
+                    return True  # 如果查找到IP但时间差大于等于10秒，则返回True
+        return True  # 如果未找到IP，则返回True
+
+
+def process_cookie_line(line):
+    match = re.search(r'{.*}', line)
+    if match:
+        return match.group(0)
+    else:
+        return None
+
+
+def cookie_get():
+    with open('cookie.txt', 'r+') as file:
+        lines = file.readlines()
+        for i, line in enumerate(lines):
+            cookie = process_cookie_line(line)
+            if cookie:
+                del lines[i]
+                file.seek(0)
+                file.truncate()
+                file.writelines(lines)
+                return cookie
+        return "没货了，快找AB补货"
+
+
 # GetCookieAPI
-cookie = ""
+
+
 @app.get("/get_cookie")
 async def get_cookie(request: Request):
-    global cookie
-    try:
-        cursor.execute("SELECT * FROM cookie LIMIT 1")
-        result = cursor.fetchone()
-        cookie = result[0]
-        print(request.client.host + ',' + get_time())
+    if check_ip(request.client.host):
+        cookie = cookie_get()
         with open('get_count.csv', 'a', encoding='utf-8') as file:
             file.write(request.client.host + ',' + get_time() + '\n')
         return {"status": 1, "cookie": cookie}
-    except:
+    else:
+        print('铸币[' + request.client.host + ']正在DDOS服务器!')
+        with open('block_ip.csv', 'a', encoding='utf-8') as file:
+            file.write(request.client.host + ',' + get_time() + '\n')
         return {"status": 0}
-    finally:
-        sql = "DELETE FROM cookie WHERE cookie = %s"
-        cursor.execute(sql, (cookie,))
-        conn.commit()
