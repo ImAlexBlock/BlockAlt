@@ -71,17 +71,23 @@ async def get_cookie(request: Request):
         cookie = cookie_get()
         with open('get_count.csv', 'a', encoding='utf-8') as file:
             file.write(request.client.host + ',' + get_time() + '\n')
+        with open('log.txt', 'a', encoding='utf-8') as file:
+            file.write('[' + get_time() + ']' + request.client.host + ':Get a cookie' + '\n')
         return {"status": 1, "cookie": cookie}
     else:
         print('铸币[' + request.client.host + ']正在DDOS服务器!')
         with open('block_ip.csv', 'a', encoding='utf-8') as file:
             file.write(request.client.host + ',' + get_time() + '\n')
-        return {"status": 0}
+        with open('log.txt', 'a', encoding='utf-8') as file:
+            file.write('[' + get_time() + ']' + request.client.host + ':Trigger frequency limit' + '\n')
+        return {"status": 0, "message": "主播别刷我接口了，能不能去手撕jsmh的验证码😅"}
 
 
 # GetCookieCountAPI
 @app.get("/free_cookie/count")
-async def count():
+async def count(request: Request):
     with open('cookie.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
+    with open('log.txt', 'a', encoding='utf-8') as file:
+        file.write('[' + get_time() + ']' + request.client.host + ':Check count' + '\n')
         return {"count": len(lines)}
