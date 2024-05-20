@@ -3,11 +3,19 @@ from datetime import datetime
 import time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+import random
+import string
 
 app = FastAPI()
 
-print("FreeCookieAPI by AlexBlock")
-print("Build240508")
+print('''+==================================================================================+
+|   _____                   ____               _     _           _     ____  ___   |
+|  |  ___|_ __  ___   ___  / ___| ___    ___  | | __(_)  ___    / \   |  _ \|_ _|  |
+|  | |_  | '__|/ _ \ / _ \| |    / _ \  / _ \ | |/ /| | / _ \  / _ \  | |_) || |   |
+|  |  _| | |  |  __/|  __/| |___| (_) || (_) ||   < | ||  __/ / ___ \ |  __/ | |   |
+|  |_|   |_|   \___| \___| \____|\___/  \___/ |_|\_\|_| \___|/_/   \_\|_|   |___|  |
++==================================================================================+''')
+print('Powered by AlexBlock\nRelease: 2024-05-20\nVersion: 1.3.2')
 
 origins = ["*"]
 
@@ -24,6 +32,33 @@ def get_time():
     # 获取当前时间并格式化
     time_is = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     return time_is
+
+
+def generate_random_cookie():
+    cookie_template = {
+        "sauth_json": "{\"gameid\": \"x19\", \"app_channel\": \"4399pc\", \"login_channel\": \"4399pc\", \"platform\": \"pc\", \"sdkuid\": \"267384159\", \"sessionid\": \"$sessionid\", \"udid\": \"$udid\", \"deviceid\": \"$deviceid\", \"aim_info\": \"{\\\"aim\\\":\\\"110.001.001.001\\\",\\\"country\\\":\\\"CN\\\",\\\"tz\\\":\\\"+0800\\\",\\\"tzid\\\":\\\"\\\"}\", \"client_login_sn\": \"$client_login_sn\", \"gas_token\": \"\", \"source_platform\": \"pc\", \"ip\": \"127.0.0.1\", \"userid\": \"$userid\", \"timestamp\": \"$timestamp\", \"realname\": \"{\\\"realname_type\\\":\\\"0\\\"}\", \"sdk_version\": \"1.0.0\"}"
+    }
+    values = {
+        "sessionid": ''.join(random.choices(string.ascii_lowercase + string.digits, k=32)),
+        "udid": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)),
+        "deviceid": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)),
+        "client_login_sn": ''.join(random.choices(string.ascii_uppercase + string.digits, k=32)),
+        "userid": ''.join(random.choices(string.ascii_lowercase + string.digits, k=10)),
+        "timestamp": str(random.randint(1000000000000, 9999999999999))
+    }
+    cookie = cookie_template["sauth_json"].replace("$sessionid", values["sessionid"]) \
+        .replace("$udid", values["udid"]) \
+        .replace("$deviceid", values["deviceid"]) \
+        .replace("$client_login_sn", values["client_login_sn"]) \
+        .replace("$userid", values["userid"]) \
+        .replace("$timestamp", values["timestamp"])
+    return cookie
+
+
+def write_cookie(cookie):
+    # 将cookie写入文件
+    with open('cookie.txt', 'a') as file:
+        file.write(cookie + '\n')
 
 
 def check_ip(ip, cd):
@@ -67,7 +102,7 @@ def cookie_get():
 # GetCookieAPI
 @app.get("/free_cookie/get")
 async def get_cookie(request: Request):
-    if check_ip(request.client.host, 10):
+    if check_ip(request.client.host, 0):
         cookie = cookie_get()
         with open('get_count.csv', 'a', encoding='utf-8') as file:
             file.write(request.client.host + ',' + get_time() + '\n')
@@ -80,7 +115,7 @@ async def get_cookie(request: Request):
             file.write(request.client.host + ',' + get_time() + '\n')
         with open('log.txt', 'a', encoding='utf-8') as file:
             file.write('[' + get_time() + ']' + request.client.host + ':Trigger frequency limit' + '\n')
-        return {"status": 0, "message": "主播别刷我接口了，能不能去手撕jsmh的验证码😅"}
+        return {"status": 0, "message": "114514"}
 
 
 # GetCookieCountAPI
