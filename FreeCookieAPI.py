@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import random
 import string
 
-app = FastAPI()
+app = FastAPI()  # docs_url=None
 
 print('''+==================================================================================+
 |   _____                   ____               _     _           _     ____  ___   |
@@ -15,7 +15,7 @@ print('''+======================================================================
 |  |  _| | |  |  __/|  __/| |___| (_) || (_) ||   < | ||  __/ / ___ \ |  __/ | |   |
 |  |_|   |_|   \___| \___| \____|\___/  \___/ |_|\_\|_| \___|/_/   \_\|_|   |___|  |
 +==================================================================================+''')
-print('Powered by AlexBlock\nRelease: 2024-05-20\nVersion: 1.3.2')
+print('Powered by AlexBlock\nRelease: 2024-05-27\nVersion: 1.4.0')
 
 origins = ["*"]
 
@@ -34,7 +34,7 @@ def get_time():
     return time_is
 
 
-def generate_random_cookie():
+def random_cookie():
     cookie_template = {
         "sauth_json": "{\"gameid\": \"x19\", \"app_channel\": \"4399pc\", \"login_channel\": \"4399pc\", \"platform\": \"pc\", \"sdkuid\": \"267384159\", \"sessionid\": \"$sessionid\", \"udid\": \"$udid\", \"deviceid\": \"$deviceid\", \"aim_info\": \"{\\\"aim\\\":\\\"110.001.001.001\\\",\\\"country\\\":\\\"CN\\\",\\\"tz\\\":\\\"+0800\\\",\\\"tzid\\\":\\\"\\\"}\", \"client_login_sn\": \"$client_login_sn\", \"gas_token\": \"\", \"source_platform\": \"pc\", \"ip\": \"127.0.0.1\", \"userid\": \"$userid\", \"timestamp\": \"$timestamp\", \"realname\": \"{\\\"realname_type\\\":\\\"0\\\"}\", \"sdk_version\": \"1.0.0\"}"
     }
@@ -61,7 +61,7 @@ def write_cookie(cookie):
         file.write(cookie + '\n')
 
 
-def check_ip(ip, cd):
+def check_ip_10min(ip):
     with open("get_count.csv") as file:
         lines = file.readlines()[-50:]  # 从后往前搜索最近的50行
         for line in reversed(lines):
@@ -70,11 +70,37 @@ def check_ip(ip, cd):
                 timestamp = datetime.strptime(data[1], '%Y-%m-%d %H:%M:%S')
                 current_time = datetime.now()
                 time_difference = (current_time - timestamp).total_seconds()
-                if time_difference < cd:
-                    return False  # 如果查找到IP并且时间差小于10秒，则返回False
+                if time_difference < 10:  # 这里是冷却时间
+                    return True  # 查找到IP并且时间差小于10秒
                 else:
-                    return True  # 如果查找到IP但时间差大于等于10秒，则返回True
-        return True  # 如果未找到IP，则返回True
+                    return False  # 查找到IP但时间差大于等于10秒
+        return False  # 未找到IP
+
+
+def check_ip_last_10_get(ip):
+    count = 0  # 计数器，用于记录匹配到的次数
+    with open("get_count.csv") as file:
+        lines = file.readlines()[-50:] if file else []  # 在文件为空的情况下将 lines 设为空列表
+        if not lines:  # 若 lines 为空，则直接返回 True
+            return True
+
+        for line in reversed(lines):
+            data = line.strip().split(',')
+            if data[0] == ip:
+                count += 1
+                if count > 10:  # 匹配次数
+                    return True
+        return False
+
+
+def check_ip(ip):
+    if check_ip_10min(ip):
+        if check_ip_last_10_get(ip):
+            return False
+        else:
+            return True
+    else:
+        return True
 
 
 def process_cookie_line(line):
@@ -96,13 +122,13 @@ def cookie_get():
                 file.truncate()
                 file.writelines(lines)
                 return cookie
-        return "没货了，快找AB补货"
+        return "没货了，等待补货！"
 
 
 # GetCookieAPI
 @app.get("/free_cookie/get")
 async def get_cookie(request: Request):
-    if check_ip(request.client.host, 0):
+    if check_ip(request.client.host):
         cookie = cookie_get()
         with open('get_count.csv', 'a', encoding='utf-8') as file:
             file.write(request.client.host + ',' + get_time() + '\n')
@@ -110,12 +136,11 @@ async def get_cookie(request: Request):
             file.write('[' + get_time() + ']' + request.client.host + ':Get a cookie' + '\n')
         return {"status": 1, "cookie": cookie}
     else:
-        print('铸币[' + request.client.host + ']正在DDOS服务器!')
         with open('block_ip.csv', 'a', encoding='utf-8') as file:
             file.write(request.client.host + ',' + get_time() + '\n')
         with open('log.txt', 'a', encoding='utf-8') as file:
             file.write('[' + get_time() + ']' + request.client.host + ':Trigger frequency limit' + '\n')
-        return {"status": 0, "message": "114514"}
+        return {"status": 1, "cookie": random_cookie()}
 
 
 # GetCookieCountAPI
