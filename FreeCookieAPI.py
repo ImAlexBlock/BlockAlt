@@ -15,7 +15,7 @@ print('''+======================================================================
 |  |  _| | |  |  __/|  __/| |___| (_) || (_) ||   < | ||  __/ / ___ \ |  __/ | |   |
 |  |_|   |_|   \___| \___| \____|\___/  \___/ |_|\_\|_| \___|/_/   \_\|_|   |___|  |
 +==================================================================================+''')
-print('Powered by AlexBlock\nRelease: 2024-05-27\nVersion: 1.4.0')
+print('Powered by AlexBlock\nRelease: 2024-05-29\nVersion: 1.4.2')
 
 origins = ["*"]
 
@@ -29,7 +29,6 @@ app.add_middleware(
 
 
 def get_time():
-    # 获取当前时间并格式化
     time_is = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     return time_is
 
@@ -56,14 +55,13 @@ def random_cookie():
 
 
 def write_cookie(cookie):
-    # 将cookie写入文件
     with open('cookie.txt', 'a') as file:
         file.write(cookie + '\n')
 
 
-def check_ip_10min(ip):
+def check_ip_10s(ip):
     with open("get_count.csv") as file:
-        lines = file.readlines()[-50:]  # 从后往前搜索最近的50行
+        lines = file.readlines()[-50:]
         for line in reversed(lines):
             data = line.strip().split(',')
             if data[0] == ip:
@@ -71,34 +69,40 @@ def check_ip_10min(ip):
                 current_time = datetime.now()
                 time_difference = (current_time - timestamp).total_seconds()
                 if time_difference < 10:  # 这里是冷却时间
-                    return True  # 查找到IP并且时间差小于10秒
-                else:
-                    return False  # 查找到IP但时间差大于等于10秒
-        return False  # 未找到IP
-
-
-def check_ip_last_10_get(ip):
-    count = 0  # 计数器，用于记录匹配到的次数
-    with open("get_count.csv") as file:
-        lines = file.readlines()[-50:] if file else []  # 在文件为空的情况下将 lines 设为空列表
-        if not lines:  # 若 lines 为空，则直接返回 True
-            return True
-
-        for line in reversed(lines):
-            data = line.strip().split(',')
-            if data[0] == ip:
-                count += 1
-                if count > 10:  # 匹配次数
                     return True
+                else:
+                    return False
+        return False
+
+
+def check_ip_last_get(ip):
+    count = 0
+    try:
+        with open("get_count.csv", "r") as file:
+            lines = file.readlines()[-100:]
+            for line in reversed(lines):
+                data = line.strip().split(',')
+                if data[0] == ip:
+                    count += 1
+                    if count > 10:
+                        return True
+            return False
+    except FileNotFoundError:
+        print("文件未找到，请确保文件路径正确")
         return False
 
 
 def check_ip(ip):
-    if check_ip_10min(ip):
-        if check_ip_last_10_get(ip):
-            return False
-        else:
-            return True
+    if check_ip_10s(ip):
+        with open('log.txt', 'a', encoding='utf-8') as file:
+            file.write('[' + get_time() + ']' + ip + ':Triggering the 10-second limit' + '\n')
+        return False
+    elif check_ip_last_get(ip):
+        with open('log.txt', 'a', encoding='utf-8') as file:
+            file.write('[' + get_time() + ']' + ip + ':The number of abnormal acquisitions detected' + '\n')
+        with open('dog.txt', 'a', encoding='utf-8') as file:
+            file.write('[' + get_time() + ']' + ip + '\n')
+        return False
     else:
         return True
 
@@ -136,10 +140,6 @@ async def get_cookie(request: Request):
             file.write('[' + get_time() + ']' + request.client.host + ':Get a cookie' + '\n')
         return {"status": 1, "cookie": cookie}
     else:
-        with open('block_ip.csv', 'a', encoding='utf-8') as file:
-            file.write(request.client.host + ',' + get_time() + '\n')
-        with open('log.txt', 'a', encoding='utf-8') as file:
-            file.write('[' + get_time() + ']' + request.client.host + ':Trigger frequency limit' + '\n')
         return {"status": 1, "cookie": random_cookie()}
 
 
